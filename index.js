@@ -42,7 +42,7 @@ class Homefront {
   /**
    * Recursively merges given sources into data.
    *
-   * @param {{}[]} sources One or more, or array of, objects to merge into data (left to right).
+   * @param {...Object} sources One or more, or array of, objects to merge into data (left to right).
    *
    * @return {Homefront}
    */
@@ -65,6 +65,19 @@ class Homefront {
     extend.apply(extend, [true, this.data].concat(mergeData));
 
     return this;
+  }
+
+  /**
+   * Static version of merge, allowing you to merge objects together.
+   *
+   * @param {...Object} sources One or more, or array of, objects to merge (left to right).
+   *
+   * @return {{}}
+   */
+  static merge(sources) {
+    sources = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments);
+
+    return extend.apply(extend, [true, {}].concat(sources));
   }
 
   /**
