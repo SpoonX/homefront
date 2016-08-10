@@ -192,6 +192,26 @@ describe('Homefront', () => {
     });
   });
 
+  describe('static .merge()', () => {
+    it('Should merge together two objects.', () => {
+      let result = Homefront.merge(
+        {foo: 'bar', cake: {walk: 1}},
+        {foo: 'bat', cake: {tastes: 'good'}},
+        {cake: {but: 'so does bacon'}, lies: true}
+      );
+
+      assert.deepEqual(result, {
+        foo : 'bat',
+        cake: {
+          walk  : 1,
+          tastes: 'good',
+          but   : 'so does bacon'
+        },
+        lies: true
+      });
+    });
+  });
+
   describe('.merge()', () => {
     it('Should properly merge in data, converting flat to nested.', () => {
       let homefront = new Homefront(Object.assign({}, nested), Homefront.MODE_NESTED);
