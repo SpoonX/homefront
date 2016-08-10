@@ -50,6 +50,15 @@ export declare class Homefront {
   merge(...sources:Array<{}|Homefront>):Homefront;
 
   /**
+   * Static version of merge, allowing you to merge objects together.
+   *
+   * @param {...Object} sources One or more, or array of, objects to merge into data (left to right).
+   *
+   * @return {{}}
+   */
+  static merge(...sources:Array<{}|Homefront>):{};
+
+  /**
    * Sets the mode.
    *
    * @param {String} [mode] Defaults to nested.
