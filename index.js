@@ -77,7 +77,7 @@ class Homefront {
   static merge(sources) {
     sources = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments);
 
-    return extend.apply(extend, [true, {}].concat(sources));
+    return extend.apply(extend, [true].concat(sources));
   }
 
   /**
