@@ -1,6 +1,6 @@
 {
   "name": "homefront",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Object manipulation packed in a simple module.",
   "main": "index.js",
   "typings": "homefront.d.ts",
