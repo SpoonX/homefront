@@ -47,6 +47,9 @@ homefront.merge(
   new Homefront({andThis: 'also works'})
 );
 
+// And, sorry, the same again, but static.
+Homefront.merge({foo: 'bar'}, {bat: 'baz'});
+
 // Flatten object (nested objects to dot-notation keys):
 homefront.flatten();
 
