@@ -1,0 +1,56 @@
+{
+  "name": "homefront",
+  "version": "1.0.0",
+  "description": "Object manipulation packed in a simple module.",
+  "main": "index.js",
+  "typings": "homefront.d.ts",
+  "scripts": {
+    "test": "eslint index.js lib && mocha -b",
+    "build": "rm -rf dist && mkdir dist && buble -i index.js -o dist/index.js && buble -i lib/ -o dist/lib/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/SpoonX/homefront.git"
+  },
+  "keywords": [
+    "json",
+    "awesome",
+    "object",
+    "merge",
+    "extend",
+    "flatten",
+    "expand",
+    "search",
+    "manipulate",
+    "tool"
+  ],
+  "author": "RWOverdijk <info@spoonx.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SpoonX/homefront/issues"
+  },
+  "homepage": "https://github.com/SpoonX/homefront#readme",
+  "devDependencies": {
+    "buble": "^0.12.5",
+    "chai": "^3.5.0",
+    "eslint": "^2.8.0",
+    "gulp": "^3.9.1",
+    "gulp-conventional-changelog": "^1.1.0",
+    "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "extend": "^3.0.0"
+  },
+  "jspm": {
+    "jspmPackage": true,
+    "registry": "npm",
+    "main": "index",
+    "format": "cjs",
+    "directories": {
+      "dist": "dist"
+    },
+    "dependencies": {
+      "extend": "^3.0.0"
+    }
+  }
+}
