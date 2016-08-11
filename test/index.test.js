@@ -6,8 +6,52 @@ let flat      = require('./resources/flat.json');
 let extend    = require('extend');
 let nested    = require('./resources/nested.json');
 let Homefront = require('../index.js').Homefront;
+let Statham   = require('json-statham').Statham;
 
 describe('Homefront', () => {
+
+  describe('static .fromFile()', () => {
+
+    it('Should throw error if browser.', done => {
+      global.window = true;
+
+      return Homefront.fromFile(__dirname + '/resources/nested.json')
+          .then(() => {
+            done(new Error('It did not throw exception.'));
+          })
+          .catch(exception => {
+            assert.strictEqual(exception.message, 'Unsupported environment. This method only works on the server (node.js).');
+
+            global.window = undefined;
+
+            done();
+          });
+    });
+
+    it('Should return a new Statham instance with the data from given file.', () => {
+      return Homefront.fromFile(__dirname + '/resources/nested.json').then(homefront => {
+        assert.instanceOf(homefront, Statham, 'Not sure what happened here.');
+      });
+    });
+
+    it('Should return a new Statham instance with the data from given file and given mode.', () => {
+      let instanceCreationPromises = [
+        Homefront.fromFile(__dirname + '/resources/flat.json', Homefront.MODE_FLAT),
+        Homefront.fromFile(__dirname + '/resources/nested.json', Homefront.MODE_NESTED)
+      ];
+
+      return Promise.all(instanceCreationPromises).then(results => {
+        assert.strictEqual(results[0].mode, Homefront.MODE_FLAT, 'Mode is not flat.');
+        assert.strictEqual(results[1].mode, Homefront.MODE_NESTED, 'Mode is not nested.');
+      });
+    });
+
+    it("Should set the file's path as the instance's `filePath`.", () => {
+      return Homefront.fromFile(__dirname + '/resources/nested.json').then(homefront => {
+        assert.strictEqual(homefront.filePath, __dirname + '/resources/nested.json', '`filePath` not set.');
+      });
+    });
+  });
 
   describe('.constructor()', () => {
     it("Should create a new instance with a flat object.", () => {
@@ -46,6 +90,12 @@ describe('Homefront', () => {
       let homefront = new Homefront({}, Homefront.MODE_FLAT);
 
       assert.strictEqual(homefront.mode, 'flat', 'It did not accept or assign mode.');
+    });
+
+    it('Should accept filePath as third argument.', () => {
+      let homefront = new Homefront({}, null, __dirname + 'file.json');
+
+      assert.strictEqual(homefront.filePath, __dirname + 'file.json', 'It did not accept or assign path.');
     });
   });
 

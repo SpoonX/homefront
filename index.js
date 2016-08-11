@@ -4,6 +4,7 @@ const extend      = require('extend');
 const expand      = require('./lib/expand');
 const Utils       = require('./lib/utils');
 const flatten     = require('./lib/flatten');
+const Statham     = require('json-statham').Statham;
 const MODE_FLAT   = 'flat';
 const MODE_NESTED = 'nested';
 const MODES       = [MODE_FLAT, MODE_NESTED];
@@ -11,7 +12,7 @@ const MODES       = [MODE_FLAT, MODE_NESTED];
 /**
  * Object wrapping class.
  */
-class Homefront {
+class Homefront extends Statham {
 
   /**
    * @return {string}
@@ -33,7 +34,8 @@ class Homefront {
    * @param {{}}     [data]       Defaults to empty object.
    * @param {String} [mode]       Defaults to nested
    */
-  constructor(data, mode) {
+  constructor(data, mode, filePath) {
+    super(data, mode, filePath);
     this.data = data || {};
 
     this.setMode(mode);
