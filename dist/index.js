@@ -70,7 +70,7 @@ Homefront.prototype.merge = function merge (sources) {
 Homefront.merge = function merge (sources) {
   sources = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments);
 
-  return extend.apply(extend, [true, {}].concat(sources));
+  return extend.apply(extend, [true].concat(sources));
 };
 
 /**
@@ -142,6 +142,26 @@ Homefront.prototype.isModeNested = function isModeNested () {
 };
 
 /**
+ * Convenience method. Calls .fetch(), and on null result calls .put() using provided toPut.
+ *
+ * @param {String|Array} key
+ * @param {*}          toPut
+ *
+ * @return {*}
+ */
+Homefront.prototype.fetchOrPut = function fetchOrPut (key, toPut) {
+  var wanted = this.fetch(key);
+
+  if (wanted === null) {
+    wanted = toPut;
+
+    this.put(key, toPut);
+  }
+
+  return wanted;
+};
+
+/**
  * Fetches value of given key.
  *
  * @param {String|Array} key
@@ -194,8 +214,8 @@ Homefront.prototype.put = function put (key, value) {
   var lastKey = keys.pop();
   var tmp   = this.data;
 
-  keys.forEach(function (value) {
-    if (typeof tmp[value] === 'undefined') {
+    keys.forEach(function (value) {
+      if (typeof tmp[value] === 'undefined') {
       tmp[value] = {};
     }
 
@@ -218,7 +238,7 @@ Homefront.prototype.remove = function remove (key) {
   if (this.isModeFlat() || key.indexOf('.') === -1) {
     delete this.data[key];
 
-      return this;
+    return this;
   }
 
   var normalizedKey = Utils.normalizeKey(key);

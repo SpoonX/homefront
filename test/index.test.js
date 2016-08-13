@@ -151,6 +151,23 @@ describe('Homefront', () => {
     });
   });
 
+  describe('.fetchOrPut()', () => {
+    it('Should return the value that was passed via toPut.', () => {
+      let homefront = new Homefront();
+      let toPut     = {thing: 'value'};
+
+      assert.deepEqual(homefront.fetchOrPut('walk.in.the.park', toPut), toPut);
+    });
+
+    it('Should return the value found, after calling fetchOrPut with the same key before.', () => {
+      let homefront = new Homefront();
+      let toPut     = {thing: 'value'};
+
+      assert.deepEqual(homefront.fetchOrPut('walk.in.the.park', toPut), toPut);
+      assert.deepEqual(homefront.fetch('walk.in.the.park', toPut), toPut);
+    });
+  });
+
   describe('.fetch()', () => {
     it("Should return value of given key in a nested instance.", () => {
       let homefront = new Homefront({food: {bacon: {taste: 'good'}}});

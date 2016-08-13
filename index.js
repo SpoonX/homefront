@@ -149,6 +149,26 @@ class Homefront {
   }
 
   /**
+   * Convenience method. Calls .fetch(), and on null result calls .put() using provided toPut.
+   *
+   * @param {String|Array} key
+   * @param {*}            toPut
+   *
+   * @return {*}
+   */
+  fetchOrPut(key, toPut) {
+    let wanted = this.fetch(key);
+
+    if (wanted === null) {
+      wanted = toPut;
+
+      this.put(key, toPut);
+    }
+
+    return wanted;
+  }
+
+  /**
    * Fetches value of given key.
    *
    * @param {String|Array} key

@@ -35,6 +35,7 @@ homefront.remove('me');
 // Use dot-notation for nested objects.
 homefront.put('user.profile.username', 'Frank');
 homefront.fetch('user.profile.username');
+homefront.fetchOrPut('user.profile.username', 'Francis');
 homefront.remove('user.profile.username');
 
 // Merge new data into your object
