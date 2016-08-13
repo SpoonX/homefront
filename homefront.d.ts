@@ -105,6 +105,16 @@ export declare class Homefront {
   isModeNested():boolean;
 
   /**
+   * Convenience method. Calls .fetch(), and on null result calls .put() using provided toPut.
+   *
+   * @param {String|Array} key
+   * @param {*}            toPut
+   *
+   * @return {*}
+   */
+  fetchOrPut(key:string, toPut:any):any;
+
+  /**
    * Fetches value of given key.
    *
    * @param {String|Array} key
