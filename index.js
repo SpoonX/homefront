@@ -288,5 +288,5 @@ class Homefront {
 
 module.exports.flatten   = flatten;
 module.exports.expand    = expand;
-module.exports.expand    = expand;
+module.exports.Utils     = Utils;
 module.exports.Homefront = Homefront;
