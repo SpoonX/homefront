@@ -252,7 +252,7 @@ class Homefront {
     let lastKey       = normalizedKey.pop();
     let source        = this.fetch(normalizedKey);
 
-    if (typeof source === 'object' && typeof source[lastKey] !== 'undefined') {
+    if (typeof source === 'object' && source !== null) {
       delete source[lastKey];
     }
 
