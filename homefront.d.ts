@@ -115,6 +115,16 @@ export declare class Homefront {
   fetchOrPut(key:string, toPut:any):any;
 
   /**
+   * Method allowing you to set missing keys (backwards-applied defaults) nested.
+   *
+   * @param {String|Array} key
+   * @param {*}            defaults
+   *
+   * @returns {Homefront}
+   */
+  fetch(key?:string, defaults?:any):any;
+
+  /**
    * Fetches value of given key.
    *
    * @param {String|Array} key
