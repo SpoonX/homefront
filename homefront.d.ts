@@ -122,7 +122,7 @@ export declare class Homefront {
    *
    * @returns {Homefront}
    */
-  fetch(key?:string, defaults?:any):any;
+  defaults(key?:string, defaults?:any):any;
 
   /**
    * Fetches value of given key.
