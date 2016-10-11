@@ -1,3 +1,13 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/SpoonX/homefront/compare/1.2.3...v1.3.0) (2016-10-11)
+
+
+### Features
+
+* **project:** Added .defaults() method ([dd35895](https://github.com/SpoonX/homefront/commit/dd35895))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/SpoonX/homefront/compare/v1.1.2...v1.2.0) (2016-08-13)
 

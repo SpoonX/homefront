@@ -149,6 +149,18 @@ class Homefront {
   }
 
   /**
+   * Method allowing you to set missing keys (backwards-applied defaults) nested.
+   *
+   * @param {String|Array} key
+   * @param {*}            defaults
+   *
+   * @returns {Homefront}
+   */
+  defaults(key, defaults) {
+    return this.put(key, Homefront.merge(defaults, this.fetch(key, {})));
+  }
+
+  /**
    * Convenience method. Calls .fetch(), and on null result calls .put() using provided toPut.
    *
    * @param {String|Array} key

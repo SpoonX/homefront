@@ -300,6 +300,36 @@ describe('Homefront', () => {
     });
   });
 
+  describe('.defaults()', () => {
+    it("Should set the defaults (left to right) provided", () => {
+      let homefront = new Homefront({foo: {bar: {bat: 'value', baz: 'value', deep: {also: 'works'}}}});
+
+      homefront.defaults('foo.bar', {
+        bat  : 'never applied',
+        cake : 'lies',
+        bacon: 'Why not',
+        baz  : 'Also ignored',
+        deep : {
+          also : 'not set',
+          other: 'is set'
+        }
+      });
+
+      assert.deepEqual(homefront.fetch('foo'), {
+        bar: {
+          bat  : 'value',
+          cake : 'lies',
+          bacon: 'Why not',
+          baz  : 'value',
+          deep : {
+            also : 'works',
+            other: 'is set'
+          }
+        }
+      });
+    });
+  });
+
   describe('.put()', () => {
     it("Should put a new key and value in the nested intance's data.", () => {
       let homefront = new Homefront({food: {bacon: {}}});
