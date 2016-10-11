@@ -18,7 +18,7 @@ Usage is pretty straight forward.
 
 ### Homefront class
 
-#### Creating an instance
+#### Working with homefront
 ```js
 let Homefront = require('homefront').Homefront;
 let homefront = new Homefront(data, Homefront.MODE_NESTED);
@@ -50,6 +50,13 @@ homefront.merge(
 
 // And, sorry, the same again, but static.
 Homefront.merge({foo: 'bar'}, {bat: 'baz'});
+
+// And sort of the same, apply defaults.
+homefront.defaults('you.are', {
+  wrong : 'never set, because it already exists',
+  right : 'applied because non-existent',
+  nested: {also: 'works'}
+});
 
 // Flatten object (nested objects to dot-notation keys):
 homefront.flatten();
