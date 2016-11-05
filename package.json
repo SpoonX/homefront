@@ -6,7 +6,10 @@
   "typings": "homefront.d.ts",
   "scripts": {
     "test": "eslint index.js lib && mocha -b",
-    "build": "rm -rf dist && mkdir dist && buble -i index.js -o dist/index.js && buble -i lib/ -o dist/lib/"
+    "build": "rm -rf dist && mkdir dist && buble -i index.js -o dist/index.js && buble -i lib/ -o dist/lib/",
+    "preversion": "npm test",
+    "version": "npm run build && gulp prepare-package && git add -A dist doc/CHANGELOG.md bower.json",
+    "postpublish": "git push upstream master && git push upstream --tags"
   },
   "repository": {
     "type": "git",
@@ -31,12 +34,13 @@
   },
   "homepage": "https://github.com/SpoonX/homefront#readme",
   "devDependencies": {
-    "buble": "^0.12.5",
+    "buble": "^0.14.2",
     "chai": "^3.5.0",
-    "eslint": "^2.8.0",
+    "eslint": "^3.9.1",
     "gulp": "^3.9.1",
     "gulp-conventional-changelog": "^1.1.0",
-    "mocha": "^2.4.5"
+    "mocha": "^3.1.2",
+    "spoonx-tools": "^1.0.0-0"
   },
   "dependencies": {
     "extend": "^3.0.0"
@@ -51,6 +55,14 @@
     },
     "dependencies": {
       "extend": "^3.0.0"
+    },
+    "peerDependencies": {
+      "extend": "^3.0.0"
+    }
+  },
+  "aurelia": {
+    "build": {
+      "resources": []
     }
   }
 }

@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+
 'use strict';
 
 const extend      = require('extend');
@@ -47,7 +49,7 @@ class Homefront {
    * @return {Homefront}
    */
   merge(sources) {
-    sources       = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments);
+    sources       = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments); //eslint-disable-line prefer-rest-params
     let mergeData = [];
 
     sources.forEach(source => {
@@ -75,7 +77,7 @@ class Homefront {
    * @return {{}}
    */
   static merge(sources) {
-    sources = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments);
+    sources = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments); //eslint-disable-line prefer-rest-params
 
     return extend.apply(extend, [true].concat(sources));
   }
@@ -203,7 +205,7 @@ class Homefront {
     let lastKey = keys.pop();
     let tmp     = this.data;
 
-    for (let i = 0; i < keys.length; i++) {
+    for (let i = 0; i < keys.length; i += 1) {
       if (typeof tmp[keys[i]] === 'undefined') {
         return defaultValue;
       }
@@ -233,12 +235,12 @@ class Homefront {
     let lastKey = keys.pop();
     let tmp     = this.data;
 
-    keys.forEach(value => {
-      if (typeof tmp[value] === 'undefined') {
-        tmp[value] = {};
+    keys.forEach(val => {
+      if (typeof tmp[val] === 'undefined') {
+        tmp[val] = {};
       }
 
-      tmp = tmp[value];
+      tmp = tmp[val];
     });
 
     tmp[lastKey] = value;
