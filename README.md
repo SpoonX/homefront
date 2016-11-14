@@ -77,18 +77,18 @@ Homefront.MODE_NESTED;
 
 ### Expand
 ```js
-let Homefront = require('homefront').expand;
-let data      = {'my.nested.key': 'value', 'my.nested.other': 'value'};
-let expanded  = expand(data); // {my: {nested: {key: 'value', other: 'value'}}}
+let expand   = require('homefront').expand;
+let data     = {'my.nested.key': 'value', 'my.nested.other': 'value'};
+let expanded = expand(data); // => {my: {nested: {key: 'value', other: 'value'}}}
 ```
 
 ### Flatten
 Returns a flattened object, with all nested keys dot separated.
 
 ```js
-let Homefront = require('homefront').flatten;
-let data    = require({foo:{bar:{bat:'baz'}}});
-let flatten = flatten(data); // {'foo.bar.bat': 'baz'}
+let flatten   = require('homefront').flatten;
+let data      = {foo:{bar:{bat:'baz'}}};
+let flattened = flatten(data); // => {'foo.bar.bat': 'baz'}
 ```
 
 ## Building the code
