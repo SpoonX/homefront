@@ -8,5 +8,6 @@
   "food.apple.taste"    : "hmmmyes",
   "car.doors"           : "4",
   "car.pedals"          : "yes",
-  "car.tires"           : "maybe"
+  "car.tires"           : "maybe",
+  "fruit"               : null
 }

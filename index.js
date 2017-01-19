@@ -206,7 +206,7 @@ class Homefront {
     let tmp     = this.data;
 
     for (let i = 0; i < keys.length; i += 1) {
-      if (typeof tmp[keys[i]] === 'undefined') {
+      if (typeof tmp[keys[i]] === 'undefined' || tmp[keys[i]] === null) {
         return defaultValue;
       }
 
