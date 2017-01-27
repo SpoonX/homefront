@@ -207,6 +207,24 @@ describe('Homefront', () => {
       assert.isNull(homefront.fetch('food.apple'), 'It did not return "null".');
       assert.isNull(homefront.fetch('food.apple.going.deeper'), 'It did not return "null".');
     });
+
+    it("Should return null if key doest exist.", () => {
+      let homefront = new Homefront({food: null});
+
+      assert.strictEqual(homefront.fetch('food.bacon'), null, 'Values do not match.');
+    });
+
+    it("Should return null if nested key doesn't exist.", () => {
+      let homefront = new Homefront({food: null});
+
+      assert.strictEqual(homefront.fetch('food.bacon.foo'), null, 'Values do not match.');
+    });
+
+    it("Should return the default value if key doesn't exist.", () => {
+      let homefront = new Homefront({food: null});
+
+      assert.strictEqual(homefront.fetch('food.bacon.foo', 'default'), 'default', 'Values do not match.');
+    });
   });
 
   describe('static .merge()', () => {
