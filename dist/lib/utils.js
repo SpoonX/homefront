@@ -3,7 +3,7 @@
 var Utils = function Utils () {};
 
 Utils.normalizeKey = function normalizeKey (rest) {
-  rest         = Array.isArray(rest) ? rest : Array.prototype.slice.call(arguments);
+  rest         = Array.isArray(rest) ? rest : Array.prototype.slice.call(arguments);//eslint-disable-line prefer-rest-params
   var key      = rest.shift();
   var normalized = Array.isArray(key) ? Utils.normalizeKey(key) : key.split('.');
 

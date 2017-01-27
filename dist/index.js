@@ -1,3 +1,5 @@
+/* eslint-disable max-lines */
+
 'use strict';
 
 var extend      = require('extend');
@@ -40,7 +42,7 @@ staticAccessors.MODE_FLAT.get = function () {
 Homefront.prototype.merge = function merge (sources) {
     var this$1 = this;
 
-  sources     = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments);
+  sources     = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments); //eslint-disable-line prefer-rest-params
   var mergeData = [];
 
   sources.forEach(function (source) {
@@ -68,7 +70,7 @@ Homefront.prototype.merge = function merge (sources) {
  * @return {{}}
  */
 Homefront.merge = function merge (sources) {
-  sources = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments);
+  sources = Array.isArray(sources) ? sources : Array.prototype.slice.call(arguments); //eslint-disable-line prefer-rest-params
 
   return extend.apply(extend, [true].concat(sources));
 };
@@ -142,6 +144,18 @@ Homefront.prototype.isModeNested = function isModeNested () {
 };
 
 /**
+ * Method allowing you to set missing keys (backwards-applied defaults) nested.
+ *
+ * @param {String|Array} key
+ * @param {*}          defaults
+ *
+ * @returns {Homefront}
+ */
+Homefront.prototype.defaults = function defaults (key, defaults) {
+  return this.put(key, Homefront.merge(defaults, this.fetch(key, {})));
+};
+
+/**
  * Convenience method. Calls .fetch(), and on null result calls .put() using provided toPut.
  *
  * @param {String|Array} key
@@ -184,8 +198,8 @@ Homefront.prototype.fetch = function fetch (key, defaultValue) {
   var lastKey = keys.pop();
   var tmp   = this.data;
 
-  for (var i = 0; i < keys.length; i++) {
-    if (typeof tmp[keys[i]] === 'undefined') {
+  for (var i = 0; i < keys.length; i += 1) {
+    if (typeof tmp[keys[i]] === 'undefined' || tmp[keys[i]] === null) {
       return defaultValue;
     }
 
@@ -205,7 +219,7 @@ Homefront.prototype.fetch = function fetch (key, defaultValue) {
  */
 Homefront.prototype.put = function put (key, value) {
   if (this.isModeFlat() || key.indexOf('.') === -1) {
-    this.data[key] = value;
+      this.data[key] = value;
 
     return this;
   }
@@ -214,12 +228,12 @@ Homefront.prototype.put = function put (key, value) {
   var lastKey = keys.pop();
   var tmp   = this.data;
 
-    keys.forEach(function (value) {
-      if (typeof tmp[value] === 'undefined') {
-      tmp[value] = {};
+  keys.forEach(function (val) {
+    if (typeof tmp[val] === 'undefined') {
+      tmp[val] = {};
     }
 
-    tmp = tmp[value];
+    tmp = tmp[val];
   });
 
   tmp[lastKey] = value;
@@ -245,7 +259,7 @@ Homefront.prototype.remove = function remove (key) {
   var lastKey     = normalizedKey.pop();
   var source      = this.fetch(normalizedKey);
 
-  if (typeof source === 'object') {
+  if (typeof source === 'object' && source !== null) {
     delete source[lastKey];
   }
 
@@ -282,5 +296,5 @@ Object.defineProperties( Homefront, staticAccessors );
 
 module.exports.flatten   = flatten;
 module.exports.expand    = expand;
-module.exports.expand    = expand;
+module.exports.Utils     = Utils;
 module.exports.Homefront = Homefront;
