@@ -16,5 +16,6 @@
     "doors" : "4",
     "pedals": "yes",
     "tires" : "maybe"
-  }
+  },
+  "fruit"   : null
 }
