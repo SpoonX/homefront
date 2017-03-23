@@ -1,3 +1,13 @@
+<a name="1.3.4"></a>
+## [1.3.4](https://github.com/SpoonX/homefront/compare/v1.3.3...v1.3.4) (2017-03-23)
+
+
+### Bug Fixes
+
+* **project:** point to correct main file. ([5cd9436](https://github.com/SpoonX/homefront/commit/5cd9436))
+
+
+
 <a name="1.3.3"></a>
 ## [1.3.3](https://github.com/SpoonX/homefront/compare/1.3.2...v1.3.3) (2017-01-27)
 
