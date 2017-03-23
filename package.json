@@ -2,7 +2,7 @@
   "name": "homefront",
   "version": "1.3.3",
   "description": "Object manipulation packed in a simple module.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "typings": "homefront.d.ts",
   "scripts": {
     "test": "eslint index.js lib && mocha -b",
