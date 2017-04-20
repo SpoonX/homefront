@@ -1,4 +1,5 @@
 # homefront
+
 [![Build Status](https://travis-ci.org/SpoonX/homefront.svg?branch=master)](https://travis-ci.org/SpoonX/homefront)
 
 Merge, flatten, expand, search in, fetch from, remove from, put in and work with objects easily.
@@ -8,17 +9,21 @@ Merge, flatten, expand, search in, fetch from, remove from, put in and work with
 Makes working with javascript objects really easy, in both the browser and on the server.
 
 ## Installation
+
 `npm i --save homefront`
 
 ## Tests
+
 `npm test`
 
 ## Usage
+
 Usage is pretty straight forward.
 
 ### Homefront class
 
 #### Working with homefront
+
 ```js
 let Homefront = require('homefront').Homefront;
 let homefront = new Homefront(data, Homefront.MODE_NESTED);
@@ -76,6 +81,7 @@ Homefront.MODE_NESTED;
 ```
 
 ### Expand
+
 ```js
 let expand   = require('homefront').expand;
 let data     = {'my.nested.key': 'value', 'my.nested.other': 'value'};
@@ -83,6 +89,7 @@ let expanded = expand(data); // => {my: {nested: {key: 'value', other: 'value'}}
 ```
 
 ### Flatten
+
 Returns a flattened object, with all nested keys dot separated.
 
 ```js
@@ -92,9 +99,14 @@ let flattened = flatten(data); // => {'foo.bar.bat': 'baz'}
 ```
 
 ## Building the code
+
 For this code to work in the browser, there's an extra transpile step included.
 Running this is as easy as executing the following command:
 
 `npm run build`
 
 The built code will appear in the dist directory.
+
+## Breaking changes
+
+Since the last major version bump, method `.defaults()` has been renamed to `.applyDefaults()` as defaults cause exceptions on some browser. It shadows the name of a strict-mode function.

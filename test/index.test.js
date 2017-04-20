@@ -318,11 +318,11 @@ describe('Homefront', () => {
     });
   });
 
-  describe('.defaults()', () => {
+  describe('.applyDefaults()', () => {
     it("Should set the defaults (left to right) provided", () => {
       let homefront = new Homefront({foo: {bar: {bat: 'value', baz: 'value', deep: {also: 'works'}}}});
 
-      homefront.defaults('foo.bar', {
+      homefront.applyDefaults('foo.bar', {
         bat  : 'never applied',
         cake : 'lies',
         bacon: 'Why not',
