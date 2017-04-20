@@ -108,6 +108,15 @@ Homefront.prototype.getMode = function getMode () {
 };
 
 /**
+ * Get data object.
+ *
+ * @return {Object}
+ */
+Homefront.prototype.getData = function getData () {
+  return this.data;
+};
+
+/**
  * Expands flat object to nested object.
  *
  * @return {{}}
@@ -151,7 +160,7 @@ Homefront.prototype.isModeNested = function isModeNested () {
  *
  * @returns {Homefront}
  */
-Homefront.prototype.defaults = function defaults (key, defaults) {
+Homefront.prototype.applyDefaults = function applyDefaults (key, defaults) {
   return this.put(key, Homefront.merge(defaults, this.fetch(key, {})));
 };
 
@@ -213,13 +222,13 @@ Homefront.prototype.fetch = function fetch (key, defaultValue) {
  * Sets value for a key (creates object in path when not found).
  *
  * @param {String|Array} key  Array of key parts, or dot separated key.
- * @param {*}          value
- *
- * @returns {Homefront}
+ * @param {*}            value
+   *
+   * @returns {Homefront}
  */
 Homefront.prototype.put = function put (key, value) {
   if (this.isModeFlat() || key.indexOf('.') === -1) {
-      this.data[key] = value;
+    this.data[key] = value;
 
     return this;
   }

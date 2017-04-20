@@ -1,3 +1,18 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/SpoonX/homefront/compare/v1.3.4...v2.0.0) (2017-04-20)
+
+
+### Bug Fixes
+
+* **project:** rename defaults method ([18a496b](https://github.com/SpoonX/homefront/commit/18a496b))
+
+
+### BREAKING CHANGES
+
+* project: defaults is now called applyDefaults
+
+
+
 <a name="1.3.4"></a>
 ## [1.3.4](https://github.com/SpoonX/homefront/compare/v1.3.3...v1.3.4) (2017-03-23)
 
