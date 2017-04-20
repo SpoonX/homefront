@@ -98,3 +98,7 @@ Running this is as easy as executing the following command:
 `npm run build`
 
 The built code will appear in the dist directory.
+
+## Breaking changes
+
+Since the last major version bump, method `.defaults()` has been renamed to `.applyDefaults()` as defaults cause exceptions on some browser. It shadows the name of a strict-mode function.
