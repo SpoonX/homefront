@@ -113,6 +113,15 @@ class Homefront {
   }
 
   /**
+   * Get data object.
+   *
+   * @return {Object}
+   */
+  getData() {
+    return this.data;
+  }
+
+  /**
    * Expands flat object to nested object.
    *
    * @return {{}}
@@ -156,7 +165,7 @@ class Homefront {
    *
    * @returns {Homefront}
    */
-  defaults(key, defaults) {
+  applyDefaults(key, defaults) {
     return this.put(key, Homefront.merge(defaults, this.fetch(key, {})));
   }
 
