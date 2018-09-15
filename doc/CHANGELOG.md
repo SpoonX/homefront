@@ -1,3 +1,13 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/SpoonX/homefront/compare/v2.0.0...v3.0.0) (2018-09-15)
+
+
+### Features
+
+* **Homefront:** add typescript typings for new methods ([1298fa9](https://github.com/SpoonX/homefront/commit/1298fa9))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/SpoonX/homefront/compare/v1.3.4...v2.0.0) (2017-04-20)
 
