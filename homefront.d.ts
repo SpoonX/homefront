@@ -77,6 +77,13 @@ export declare class Homefront {
   getMode():string;
 
   /**
+   * Get data object.
+   *
+   * @return {Object}
+   */
+  getData(): {};
+
+  /**
    * Expands flat object to nested object.
    *
    * @return {{}}
@@ -122,7 +129,7 @@ export declare class Homefront {
    *
    * @returns {Homefront}
    */
-  defaults(key?:string, defaults?:any):any;
+  applyDefaults(key?:string, defaults?:any):any;
 
   /**
    * Fetches value of given key.
