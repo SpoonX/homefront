@@ -74,6 +74,13 @@ let data      = {'my.nested.key': 'value', 'my.nested.other': 'value'};
 let expanded  = expand(data); // {my: {nested: {key: 'value', other: 'value'}}}
 ```
 
+### Expand with overwite
+```js
+let Homefront = require('homefront').expand;
+let data      = {my: 'test', 'my.key': 'value', 'my.other': 'value'};
+let expanded  = expand(data, true); // {my: {key: 'value', other: 'value'}}
+```
+
 ### Flatten
 Returns a flattened object, with all nested keys dot separated.
 
