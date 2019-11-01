@@ -36,7 +36,7 @@
   "devDependencies": {
     "buble": "^0.14.2",
     "chai": "^3.5.0",
-    "eslint": "^3.9.1",
+    "eslint": "^6.6.0",
     "gulp": "^3.9.1",
     "gulp-conventional-changelog": "^1.1.0",
     "mocha": "^3.1.2",
