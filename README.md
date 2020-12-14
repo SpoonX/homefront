@@ -8,6 +8,16 @@ Merge, flatten, expand, search in, fetch from, remove from, put in and work with
 
 Makes working with javascript objects really easy, in both the browser and on the server.
 
+## Security warning
+
+This library does **not** attempt to filter out any input and expects you to do so yourself as required by your project. One of the things you can do with Homefront is store prototype values. This means that you shouldn't _(unless intended)_ accept user input directly.
+
+As an example, this is a perfectly fine payload to use in expand (thanks to Snyk for contacting me about this) but will set `polluted` on the Object prototype:
+
+```js
+{ '__proto__.polluted': true }
+```
+
 ## Installation
 
 `npm i --save homefront`
